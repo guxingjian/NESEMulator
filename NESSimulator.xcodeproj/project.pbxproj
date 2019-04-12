@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9A403732256288C002E80DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A403722256288C002E80DC /* AppDelegate.m */; };
+		C9A403762256288C002E80DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A403752256288C002E80DC /* ViewController.m */; };
+		C9A403792256288C002E80DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A403772256288C002E80DC /* Main.storyboard */; };
+		C9A4037B22562890002E80DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A4037A22562890002E80DC /* Assets.xcassets */; };
+		C9A4037E22562890002E80DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A4037C22562890002E80DC /* LaunchScreen.storyboard */; };
+		C9A4038122562890002E80DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A4038022562890002E80DC /* main.m */; };
+		C9A5403D22603F62003F2913 /* NesGameSoundPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9A5403C22603F62003F2913 /* NesGameSoundPlayer.mm */; };
+		C9A5408A22606A23003F2913 /* Nes_Oscs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5407022606A23003F2913 /* Nes_Oscs.cpp */; };
+		C9A5408B22606A23003F2913 /* Multi_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5407122606A23003F2913 /* Multi_Buffer.cpp */; };
+		C9A5408C22606A23003F2913 /* Nonlinear_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408322606A23003F2913 /* Nonlinear_Buffer.cpp */; };
+		C9A5408D22606A23003F2913 /* Nes_Apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408422606A23003F2913 /* Nes_Apu.cpp */; };
+		C9A5408E22606A23003F2913 /* apu_snapshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408522606A23003F2913 /* apu_snapshot.cpp */; };
+		C9A5408F22606A23003F2913 /* Blip_Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408622606A23003F2913 /* Blip_Buffer.cpp */; };
+		C9A5409022606A23003F2913 /* Nes_Namco.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408722606A23003F2913 /* Nes_Namco.cpp */; };
+		C9A5409222606A23003F2913 /* Nes_Vrc6.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5408922606A23003F2913 /* Nes_Vrc6.cpp */; };
+		C9A646D5225C854A002F34BD /* NesGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9A646D4225C854A002F34BD /* NesGameViewController.mm */; };
+		C9A646D7225C8934002F34BD /* test.nes in Resources */ = {isa = PBXBuildFile; fileRef = C9A646D6225C8934002F34BD /* test.nes */; };
+		C9A646D9225C9C61002F34BD /* test2.nes in Resources */ = {isa = PBXBuildFile; fileRef = C9A646D8225C9C61002F34BD /* test2.nes */; };
+		C9B6BF70225EE66C00AEC3C2 /* ppu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF4F225EE66C00AEC3C2 /* ppu.cpp */; };
+		C9B6BF71225EE66C00AEC3C2 /* mapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF50225EE66C00AEC3C2 /* mapper.cpp */; };
+		C9B6BF72225EE66C00AEC3C2 /* cartridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF51225EE66C00AEC3C2 /* cartridge.cpp */; };
+		C9B6BF74225EE66C00AEC3C2 /* palette.inc in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF64225EE66C00AEC3C2 /* palette.inc */; };
+		C9B6BF78225EE66C00AEC3C2 /* mapper4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF69225EE66C00AEC3C2 /* mapper4.cpp */; };
+		C9B6BF79225EE66C00AEC3C2 /* mapper2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF6A225EE66C00AEC3C2 /* mapper2.cpp */; };
+		C9B6BF7A225EE66C00AEC3C2 /* mapper3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF6B225EE66C00AEC3C2 /* mapper3.cpp */; };
+		C9B6BF7B225EE66C00AEC3C2 /* mapper1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF6C225EE66C00AEC3C2 /* mapper1.cpp */; };
+		C9B6BF7C225EE66C00AEC3C2 /* apu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF6D225EE66C00AEC3C2 /* apu.cpp */; };
+		C9B6BF7D225EE66C00AEC3C2 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF6E225EE66C00AEC3C2 /* cpu.cpp */; };
+		C9B6BF81225F125D00AEC3C2 /* NesGameScreenView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF80225F125D00AEC3C2 /* NesGameScreenView.mm */; };
+		C9B6BF86225F162400AEC3C2 /* EGL_Program.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BF82225F162400AEC3C2 /* EGL_Program.m */; };
+		C9B6BF87225F162400AEC3C2 /* displayVertexShader.vs in Resources */ = {isa = PBXBuildFile; fileRef = C9B6BF84225F162400AEC3C2 /* displayVertexShader.vs */; };
+		C9B6BF88225F162400AEC3C2 /* displayFragmentShader.fs in Resources */ = {isa = PBXBuildFile; fileRef = C9B6BF85225F162400AEC3C2 /* displayFragmentShader.fs */; };
+		C9B6BFB7225F40CB00AEC3C2 /* joypad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9B6BFB6225F40CB00AEC3C2 /* joypad.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C9A4036E2256288C002E80DC /* NESSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NESSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A403712256288C002E80DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9A403722256288C002E80DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9A403742256288C002E80DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C9A403752256288C002E80DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C9A403782256288C002E80DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C9A4037A22562890002E80DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9A4037D22562890002E80DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9A4037F22562890002E80DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A4038022562890002E80DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9A5403B22603F62003F2913 /* NesGameSoundPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NesGameSoundPlayer.h; sourceTree = "<group>"; };
+		C9A5403C22603F62003F2913 /* NesGameSoundPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NesGameSoundPlayer.mm; sourceTree = "<group>"; };
+		C9A54042226042AC003F2913 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		C9A54044226042DE003F2913 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		C9A54046226042E7003F2913 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		C9A5407022606A23003F2913 /* Nes_Oscs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nes_Oscs.cpp; sourceTree = "<group>"; };
+		C9A5407122606A23003F2913 /* Multi_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Multi_Buffer.cpp; sourceTree = "<group>"; };
+		C9A5407322606A23003F2913 /* Nes_Apu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nes_Apu.h; sourceTree = "<group>"; };
+		C9A5407422606A23003F2913 /* blargg_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blargg_common.h; sourceTree = "<group>"; };
+		C9A5407522606A23003F2913 /* Nes_Vrc6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nes_Vrc6.h; sourceTree = "<group>"; };
+		C9A5407722606A23003F2913 /* static_assert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = static_assert.hpp; sourceTree = "<group>"; };
+		C9A5407822606A23003F2913 /* config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config.hpp; sourceTree = "<group>"; };
+		C9A5407922606A23003F2913 /* cstdint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cstdint.hpp; sourceTree = "<group>"; };
+		C9A5407A22606A23003F2913 /* Multi_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Multi_Buffer.h; sourceTree = "<group>"; };
+		C9A5407B22606A23003F2913 /* Nes_Oscs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nes_Oscs.h; sourceTree = "<group>"; };
+		C9A5407C22606A23003F2913 /* apu_snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = apu_snapshot.h; sourceTree = "<group>"; };
+		C9A5407E22606A23003F2913 /* Blip_Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Synth.h; sourceTree = "<group>"; };
+		C9A5407F22606A23003F2913 /* Nes_Namco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nes_Namco.h; sourceTree = "<group>"; };
+		C9A5408022606A23003F2913 /* Blip_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blip_Buffer.h; sourceTree = "<group>"; };
+		C9A5408122606A23003F2913 /* blargg_source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blargg_source.h; sourceTree = "<group>"; };
+		C9A5408222606A23003F2913 /* Nonlinear_Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nonlinear_Buffer.h; sourceTree = "<group>"; };
+		C9A5408322606A23003F2913 /* Nonlinear_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nonlinear_Buffer.cpp; sourceTree = "<group>"; };
+		C9A5408422606A23003F2913 /* Nes_Apu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nes_Apu.cpp; sourceTree = "<group>"; };
+		C9A5408522606A23003F2913 /* apu_snapshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = apu_snapshot.cpp; sourceTree = "<group>"; };
+		C9A5408622606A23003F2913 /* Blip_Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Blip_Buffer.cpp; sourceTree = "<group>"; };
+		C9A5408722606A23003F2913 /* Nes_Namco.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nes_Namco.cpp; sourceTree = "<group>"; };
+		C9A5408922606A23003F2913 /* Nes_Vrc6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nes_Vrc6.cpp; sourceTree = "<group>"; };
+		C9A646D3225C854A002F34BD /* NesGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NesGameViewController.h; sourceTree = "<group>"; };
+		C9A646D4225C854A002F34BD /* NesGameViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NesGameViewController.mm; sourceTree = "<group>"; };
+		C9A646D6225C8934002F34BD /* test.nes */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.nes; sourceTree = "<group>"; };
+		C9A646D8225C9C61002F34BD /* test2.nes */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.nes; sourceTree = "<group>"; };
+		C9B6BF4F225EE66C00AEC3C2 /* ppu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ppu.cpp; sourceTree = "<group>"; };
+		C9B6BF50225EE66C00AEC3C2 /* mapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapper.cpp; sourceTree = "<group>"; };
+		C9B6BF51225EE66C00AEC3C2 /* cartridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cartridge.cpp; sourceTree = "<group>"; };
+		C9B6BF54225EE66C00AEC3C2 /* apu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = apu.hpp; sourceTree = "<group>"; };
+		C9B6BF55225EE66C00AEC3C2 /* cpu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cpu.hpp; sourceTree = "<group>"; };
+		C9B6BF5B225EE66C00AEC3C2 /* mapper4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper4.hpp; sourceTree = "<group>"; };
+		C9B6BF5C225EE66C00AEC3C2 /* mapper2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper2.hpp; sourceTree = "<group>"; };
+		C9B6BF5D225EE66C00AEC3C2 /* mapper3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper3.hpp; sourceTree = "<group>"; };
+		C9B6BF5E225EE66C00AEC3C2 /* mapper1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper1.hpp; sourceTree = "<group>"; };
+		C9B6BF5F225EE66C00AEC3C2 /* mapper0.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper0.hpp; sourceTree = "<group>"; };
+		C9B6BF60225EE66C00AEC3C2 /* common.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
+		C9B6BF61225EE66C00AEC3C2 /* ppu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ppu.hpp; sourceTree = "<group>"; };
+		C9B6BF62225EE66C00AEC3C2 /* mapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapper.hpp; sourceTree = "<group>"; };
+		C9B6BF63225EE66C00AEC3C2 /* cartridge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cartridge.hpp; sourceTree = "<group>"; };
+		C9B6BF64225EE66C00AEC3C2 /* palette.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = palette.inc; sourceTree = "<group>"; };
+		C9B6BF69225EE66C00AEC3C2 /* mapper4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapper4.cpp; sourceTree = "<group>"; };
+		C9B6BF6A225EE66C00AEC3C2 /* mapper2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapper2.cpp; sourceTree = "<group>"; };
+		C9B6BF6B225EE66C00AEC3C2 /* mapper3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapper3.cpp; sourceTree = "<group>"; };
+		C9B6BF6C225EE66C00AEC3C2 /* mapper1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapper1.cpp; sourceTree = "<group>"; };
+		C9B6BF6D225EE66C00AEC3C2 /* apu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = apu.cpp; sourceTree = "<group>"; };
+		C9B6BF6E225EE66C00AEC3C2 /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpu.cpp; sourceTree = "<group>"; };
+		C9B6BF7F225F125D00AEC3C2 /* NesGameScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NesGameScreenView.h; sourceTree = "<group>"; };
+		C9B6BF80225F125D00AEC3C2 /* NesGameScreenView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NesGameScreenView.mm; sourceTree = "<group>"; };
+		C9B6BF82225F162400AEC3C2 /* EGL_Program.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGL_Program.m; sourceTree = "<group>"; };
+		C9B6BF83225F162400AEC3C2 /* EGL_Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGL_Program.h; sourceTree = "<group>"; };
+		C9B6BF84225F162400AEC3C2 /* displayVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = displayVertexShader.vs; sourceTree = "<group>"; };
+		C9B6BF85225F162400AEC3C2 /* displayFragmentShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = displayFragmentShader.fs; sourceTree = "<group>"; };
+		C9B6BFB6225F40CB00AEC3C2 /* joypad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joypad.cpp; sourceTree = "<group>"; };
+		C9B6BFB8225F40D400AEC3C2 /* joypad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = joypad.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9A4036B2256288C002E80DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9A403652256288C002E80DC = {
+			isa = PBXGroup;
+			children = (
+				C9A403702256288C002E80DC /* NESSimulator */,
+				C9A4036F2256288C002E80DC /* Products */,
+				C9A54041226042AC003F2913 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C9A4036F2256288C002E80DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9A4036E2256288C002E80DC /* NESSimulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9A403702256288C002E80DC /* NESSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				C9A403712256288C002E80DC /* AppDelegate.h */,
+				C9A403722256288C002E80DC /* AppDelegate.m */,
+				C9A403742256288C002E80DC /* ViewController.h */,
+				C9A403752256288C002E80DC /* ViewController.m */,
+				C9A646D3225C854A002F34BD /* NesGameViewController.h */,
+				C9A646D4225C854A002F34BD /* NesGameViewController.mm */,
+				C9B6BF7F225F125D00AEC3C2 /* NesGameScreenView.h */,
+				C9B6BF80225F125D00AEC3C2 /* NesGameScreenView.mm */,
+				C9A5403B22603F62003F2913 /* NesGameSoundPlayer.h */,
+				C9A5403C22603F62003F2913 /* NesGameSoundPlayer.mm */,
+				C9B6BF85225F162400AEC3C2 /* displayFragmentShader.fs */,
+				C9B6BF84225F162400AEC3C2 /* displayVertexShader.vs */,
+				C9B6BF83225F162400AEC3C2 /* EGL_Program.h */,
+				C9B6BF82225F162400AEC3C2 /* EGL_Program.m */,
+				C9A646D8225C9C61002F34BD /* test2.nes */,
+				C9A646D6225C8934002F34BD /* test.nes */,
+				C9A5406F22606A23003F2913 /* lib */,
+				C9B6BF4E225EE66C00AEC3C2 /* LaiNes */,
+				C9A403772256288C002E80DC /* Main.storyboard */,
+				C9A4037A22562890002E80DC /* Assets.xcassets */,
+				C9A4037C22562890002E80DC /* LaunchScreen.storyboard */,
+				C9A4037F22562890002E80DC /* Info.plist */,
+				C9A4038022562890002E80DC /* main.m */,
+			);
+			path = NESSimulator;
+			sourceTree = "<group>";
+		};
+		C9A54041226042AC003F2913 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9A54046226042E7003F2913 /* libc++abi.tbd */,
+				C9A54044226042DE003F2913 /* libc++.tbd */,
+				C9A54042226042AC003F2913 /* libc++.1.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9A5406F22606A23003F2913 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C9A5407022606A23003F2913 /* Nes_Oscs.cpp */,
+				C9A5407122606A23003F2913 /* Multi_Buffer.cpp */,
+				C9A5407222606A23003F2913 /* include */,
+				C9A5408322606A23003F2913 /* Nonlinear_Buffer.cpp */,
+				C9A5408422606A23003F2913 /* Nes_Apu.cpp */,
+				C9A5408522606A23003F2913 /* apu_snapshot.cpp */,
+				C9A5408622606A23003F2913 /* Blip_Buffer.cpp */,
+				C9A5408722606A23003F2913 /* Nes_Namco.cpp */,
+				C9A5408922606A23003F2913 /* Nes_Vrc6.cpp */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		C9A5407222606A23003F2913 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C9A5407322606A23003F2913 /* Nes_Apu.h */,
+				C9A5407422606A23003F2913 /* blargg_common.h */,
+				C9A5407522606A23003F2913 /* Nes_Vrc6.h */,
+				C9A5407622606A23003F2913 /* boost */,
+				C9A5407A22606A23003F2913 /* Multi_Buffer.h */,
+				C9A5407B22606A23003F2913 /* Nes_Oscs.h */,
+				C9A5407C22606A23003F2913 /* apu_snapshot.h */,
+				C9A5407E22606A23003F2913 /* Blip_Synth.h */,
+				C9A5407F22606A23003F2913 /* Nes_Namco.h */,
+				C9A5408022606A23003F2913 /* Blip_Buffer.h */,
+				C9A5408122606A23003F2913 /* blargg_source.h */,
+				C9A5408222606A23003F2913 /* Nonlinear_Buffer.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C9A5407622606A23003F2913 /* boost */ = {
+			isa = PBXGroup;
+			children = (
+				C9A5407722606A23003F2913 /* static_assert.hpp */,
+				C9A5407822606A23003F2913 /* config.hpp */,
+				C9A5407922606A23003F2913 /* cstdint.hpp */,
+			);
+			path = boost;
+			sourceTree = "<group>";
+		};
+		C9B6BF4E225EE66C00AEC3C2 /* LaiNes */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6BF4F225EE66C00AEC3C2 /* ppu.cpp */,
+				C9B6BF50225EE66C00AEC3C2 /* mapper.cpp */,
+				C9B6BF51225EE66C00AEC3C2 /* cartridge.cpp */,
+				C9B6BFB6225F40CB00AEC3C2 /* joypad.cpp */,
+				C9B6BF53225EE66C00AEC3C2 /* include */,
+				C9B6BF64225EE66C00AEC3C2 /* palette.inc */,
+				C9B6BF68225EE66C00AEC3C2 /* mappers */,
+				C9B6BF6D225EE66C00AEC3C2 /* apu.cpp */,
+				C9B6BF6E225EE66C00AEC3C2 /* cpu.cpp */,
+			);
+			path = LaiNes;
+			sourceTree = "<group>";
+		};
+		C9B6BF53225EE66C00AEC3C2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6BFB8225F40D400AEC3C2 /* joypad.hpp */,
+				C9B6BF54225EE66C00AEC3C2 /* apu.hpp */,
+				C9B6BF55225EE66C00AEC3C2 /* cpu.hpp */,
+				C9B6BF5A225EE66C00AEC3C2 /* mappers */,
+				C9B6BF60225EE66C00AEC3C2 /* common.hpp */,
+				C9B6BF61225EE66C00AEC3C2 /* ppu.hpp */,
+				C9B6BF62225EE66C00AEC3C2 /* mapper.hpp */,
+				C9B6BF63225EE66C00AEC3C2 /* cartridge.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C9B6BF5A225EE66C00AEC3C2 /* mappers */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6BF5B225EE66C00AEC3C2 /* mapper4.hpp */,
+				C9B6BF5C225EE66C00AEC3C2 /* mapper2.hpp */,
+				C9B6BF5D225EE66C00AEC3C2 /* mapper3.hpp */,
+				C9B6BF5E225EE66C00AEC3C2 /* mapper1.hpp */,
+				C9B6BF5F225EE66C00AEC3C2 /* mapper0.hpp */,
+			);
+			path = mappers;
+			sourceTree = "<group>";
+		};
+		C9B6BF68225EE66C00AEC3C2 /* mappers */ = {
+			isa = PBXGroup;
+			children = (
+				C9B6BF69225EE66C00AEC3C2 /* mapper4.cpp */,
+				C9B6BF6A225EE66C00AEC3C2 /* mapper2.cpp */,
+				C9B6BF6B225EE66C00AEC3C2 /* mapper3.cpp */,
+				C9B6BF6C225EE66C00AEC3C2 /* mapper1.cpp */,
+			);
+			path = mappers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9A4036D2256288C002E80DC /* NESSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A4038422562890002E80DC /* Build configuration list for PBXNativeTarget "NESSimulator" */;
+			buildPhases = (
+				C9A4036A2256288C002E80DC /* Sources */,
+				C9A4036B2256288C002E80DC /* Frameworks */,
+				C9A4036C2256288C002E80DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NESSimulator;
+			productName = NESSimulator;
+			productReference = C9A4036E2256288C002E80DC /* NESSimulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9A403662256288C002E80DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = qingzhao;
+				TargetAttributes = {
+					C9A4036D2256288C002E80DC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = C9A403692256288C002E80DC /* Build configuration list for PBXProject "NESSimulator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9A403652256288C002E80DC;
+			productRefGroup = C9A4036F2256288C002E80DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9A4036D2256288C002E80DC /* NESSimulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9A4036C2256288C002E80DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B6BF88225F162400AEC3C2 /* displayFragmentShader.fs in Resources */,
+				C9A646D7225C8934002F34BD /* test.nes in Resources */,
+				C9A4037E22562890002E80DC /* LaunchScreen.storyboard in Resources */,
+				C9A4037B22562890002E80DC /* Assets.xcassets in Resources */,
+				C9A403792256288C002E80DC /* Main.storyboard in Resources */,
+				C9B6BF87225F162400AEC3C2 /* displayVertexShader.vs in Resources */,
+				C9A646D9225C9C61002F34BD /* test2.nes in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9A4036A2256288C002E80DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A5408F22606A23003F2913 /* Blip_Buffer.cpp in Sources */,
+				C9A5403D22603F62003F2913 /* NesGameSoundPlayer.mm in Sources */,
+				C9A403762256288C002E80DC /* ViewController.m in Sources */,
+				C9B6BF86225F162400AEC3C2 /* EGL_Program.m in Sources */,
+				C9A5409222606A23003F2913 /* Nes_Vrc6.cpp in Sources */,
+				C9B6BF70225EE66C00AEC3C2 /* ppu.cpp in Sources */,
+				C9B6BF7B225EE66C00AEC3C2 /* mapper1.cpp in Sources */,
+				C9A5408E22606A23003F2913 /* apu_snapshot.cpp in Sources */,
+				C9A5408D22606A23003F2913 /* Nes_Apu.cpp in Sources */,
+				C9B6BF71225EE66C00AEC3C2 /* mapper.cpp in Sources */,
+				C9A5408C22606A23003F2913 /* Nonlinear_Buffer.cpp in Sources */,
+				C9B6BF72225EE66C00AEC3C2 /* cartridge.cpp in Sources */,
+				C9B6BF7C225EE66C00AEC3C2 /* apu.cpp in Sources */,
+				C9A4038122562890002E80DC /* main.m in Sources */,
+				C9B6BF81225F125D00AEC3C2 /* NesGameScreenView.mm in Sources */,
+				C9B6BF79225EE66C00AEC3C2 /* mapper2.cpp in Sources */,
+				C9A646D5225C854A002F34BD /* NesGameViewController.mm in Sources */,
+				C9B6BFB7225F40CB00AEC3C2 /* joypad.cpp in Sources */,
+				C9A5408A22606A23003F2913 /* Nes_Oscs.cpp in Sources */,
+				C9B6BF7A225EE66C00AEC3C2 /* mapper3.cpp in Sources */,
+				C9B6BF7D225EE66C00AEC3C2 /* cpu.cpp in Sources */,
+				C9B6BF74225EE66C00AEC3C2 /* palette.inc in Sources */,
+				C9A5409022606A23003F2913 /* Nes_Namco.cpp in Sources */,
+				C9A5408B22606A23003F2913 /* Multi_Buffer.cpp in Sources */,
+				C9A403732256288C002E80DC /* AppDelegate.m in Sources */,
+				C9B6BF78225EE66C00AEC3C2 /* mapper4.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9A403772256288C002E80DC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A403782256288C002E80DC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C9A4037C22562890002E80DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A4037D22562890002E80DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9A4038222562890002E80DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9A4038322562890002E80DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9A4038522562890002E80DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4MHPN3EKX;
+				INFOPLIST_FILE = NESSimulator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.NESSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9A4038622562890002E80DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K4MHPN3EKX;
+				INFOPLIST_FILE = NESSimulator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.NESSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9A403692256288C002E80DC /* Build configuration list for PBXProject "NESSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A4038222562890002E80DC /* Debug */,
+				C9A4038322562890002E80DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A4038422562890002E80DC /* Build configuration list for PBXNativeTarget "NESSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A4038522562890002E80DC /* Debug */,
+				C9A4038622562890002E80DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9A403662256288C002E80DC /* Project object */;
+}
