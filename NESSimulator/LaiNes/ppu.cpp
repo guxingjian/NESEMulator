@@ -272,7 +272,9 @@ template<Scanline s> void scanline_cycle()
 
     if (s == NMI and dot == 1) { status.vBlank = true; if (ctrl.nmi) CPU::set_nmi(); }
     else if (s == POST and dot == 0){
-        callBack_func(callback_obj, pixels);
+        if(callBack_func){
+            callBack_func(callback_obj, pixels);
+        }
     }else if (s == VISIBLE or s == PRE)
     {
         // Sprites:

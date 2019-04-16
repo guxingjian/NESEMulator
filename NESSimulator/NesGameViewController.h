@@ -10,4 +10,7 @@
 
 @interface NesGameViewController : UIViewController
 
+@property(nonatomic, strong)NSString* nesPath;
+@property(nonatomic, assign)BOOL bAudioStatus;
+
 @end

@@ -11,8 +11,14 @@ bool strobe;        // Joypad strobe latch.
 u8 read_state(int n)
 {
     // When strobe is high, it keeps reading A:
-    if (strobe)
-        return 0x40 | (joypad_callback_func(joypad_callback_obj, n) & 1);
+    if (strobe){
+        if(joypad_callback_func){
+            return 0x40 | (joypad_callback_func(joypad_callback_obj, n) & 1);
+        }else{
+            return 0x40;
+        }
+    }
+    
 
     // Get the status of a button and shift the register:
     u8 j = 0x40 | (joypad_bits[n] & 1);
@@ -24,8 +30,11 @@ void write_strobe(bool v)
 {
     // Read the joypad data on strobe's transition 1 -> 0.
     if (strobe and !v)
-        for (int i = 0; i < 2; i++)
-            joypad_bits[i] = joypad_callback_func(joypad_callback_obj, i);
+        for (int i = 0; i < 2; i++){
+            if(joypad_callback_func){
+                joypad_bits[i] = joypad_callback_func(joypad_callback_obj, i);
+            }
+        }
 
     strobe = v;
 }

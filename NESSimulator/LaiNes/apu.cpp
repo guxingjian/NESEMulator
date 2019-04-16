@@ -3,8 +3,8 @@
 
 namespace APU {
 
-static void* apu_callback_obj;
-static void (*apu_callback_func)(void* obj, const blip_sample_t* samples, long int count);
+static void* apu_callback_obj = 0;
+static void (*apu_callback_func)(void* obj, const blip_sample_t* samples, long int count) = 0;
 
 Nes_Apu apu;
 Blip_Buffer buf;
@@ -43,8 +43,11 @@ void run_frame(int elapsed)
     apu.end_frame(elapsed);
     buf.end_frame(elapsed);
 
-    if (buf.samples_avail() >= OUT_SIZE)
-        apu_callback_func(apu_callback_obj, outBuf, buf.read_samples(outBuf, OUT_SIZE));
+    if (buf.samples_avail() >= OUT_SIZE){
+        if(apu_callback_func){
+            apu_callback_func(apu_callback_obj, outBuf, buf.read_samples(outBuf, OUT_SIZE));
+        }
+    }
 }
 
 void registeSoundCallback(void* obj, void (*callBack)(void* obj, const blip_sample_t* samples, long int count)){

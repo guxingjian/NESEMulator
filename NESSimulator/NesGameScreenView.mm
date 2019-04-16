@@ -13,6 +13,7 @@
 
 @interface NesGameScreenView()
 
+@property(nonatomic, strong)EAGLContext* oldContext;
 @property(nonatomic, strong)EAGLContext* glContext;
 @property(nonatomic, strong)EGL_Program* eglProgram;
 
@@ -22,6 +23,7 @@
     GLuint frameBuffer;
     GLuint renderBuffer;
     GLuint texture;
+    dispatch_queue_t renderQueue;
 }
 
 /*
@@ -36,8 +38,19 @@
     return [CAEAGLLayer class];
 }
 
+- (void)dealloc{
+    [EAGLContext setCurrentContext:self.oldContext];
+    glDeleteTextures(1, &texture);
+    texture = 0;
+    glDeleteRenderbuffers(1, &renderBuffer);
+    renderBuffer = 0;
+    glDeleteFramebuffers(1, &frameBuffer);
+    frameBuffer = 0;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
+        renderQueue = dispatch_queue_create("renderqueue", DISPATCH_QUEUE_SERIAL);
         [self setGLContext];
     }
     return self;
@@ -71,6 +84,8 @@
 
 - (void)setGLContext
 {
+    self.oldContext = [EAGLContext currentContext];
+    
     EAGLContext* context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
     self.glContext = context;
     [self useContext];
@@ -118,65 +133,70 @@
 }
 
 - (void)nes_newframe:(u32 *)pic{
-    [self useContext];
-    glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, renderBuffer);
-    glClearColor(0, 0, 0, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
-    GLint nW = 256;
-    GLint nH = 240;
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)nW, (int)nH, 0, GL_BGRA, GL_UNSIGNED_BYTE, pic);
-    
-    GLint backingWidth, backingHeight;
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
-    CGFloat fWScale = nW/(CGFloat)backingWidth;
-    CGFloat fHScale = nH/(CGFloat)backingHeight;
-    CGFloat fScale = 0;
-    if(fWScale > fHScale)
-    {
-        fScale = fWScale;
-    }
-    else
-    {
-        fScale = fHScale;
-    }
-    
-    GLfloat fCoorW = fWScale/fScale;
-    GLfloat fCoorH = fHScale/fScale;
-    const GLfloat vertexVertices[] = {
-        -fCoorW, -fCoorH,
-        fCoorW, -fCoorH,
-        -fCoorW,  fCoorH,
-        fCoorW, fCoorH
-    };
-    
-    static const GLfloat textureVertices[] = {
-        0.0f,  1.0f,
-        1.0f,  1.0f,
-        0.0f,  0.0f,
-        1.0f,  0.0f
-    };
-    
-    GLint vertexIndex = [self.eglProgram attribLocationOfName:@"position"];
-    glEnableVertexAttribArray(vertexIndex);
-    glVertexAttribPointer(vertexIndex, 2, GL_FLOAT, GL_FALSE, 0, vertexVertices);
-    
-    GLint textureIndex = [self.eglProgram attribLocationOfName:@"inputTextureCoordinate"];
-    glEnableVertexAttribArray(textureIndex);
-    glVertexAttribPointer(textureIndex, 2, GL_FLOAT, GL_FALSE, 0, textureVertices);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    
-    [[EAGLContext currentContext] presentRenderbuffer:GL_RENDERBUFFER];
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glBindRenderbuffer(GL_RENDERBUFFER, 0);
-    glDisableVertexAttribArray(vertexIndex);
-    glDisableVertexAttribArray(textureIndex);
+    dispatch_async(renderQueue, ^{
+        if(self.pause)
+            return ;
+        
+        [self useContext];
+        glBindFramebuffer(GL_FRAMEBUFFER, self->frameBuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, self->renderBuffer);
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+        
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, self->texture);
+        
+        GLint nW = 256;
+        GLint nH = 240;
+        
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (int)nW, (int)nH, 0, GL_BGRA, GL_UNSIGNED_BYTE, pic);
+        
+        GLint backingWidth, backingHeight;
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
+        CGFloat fWScale = nW/(CGFloat)backingWidth;
+        CGFloat fHScale = nH/(CGFloat)backingHeight;
+        CGFloat fScale = 0;
+        if(fWScale > fHScale)
+        {
+            fScale = fWScale;
+        }
+        else
+        {
+            fScale = fHScale;
+        }
+        
+        GLfloat fCoorW = fWScale/fScale;
+        GLfloat fCoorH = fHScale/fScale;
+        const GLfloat vertexVertices[] = {
+            -fCoorW, -fCoorH,
+            fCoorW, -fCoorH,
+            -fCoorW,  fCoorH,
+            fCoorW, fCoorH
+        };
+        
+        static const GLfloat textureVertices[] = {
+            0.0f,  1.0f,
+            1.0f,  1.0f,
+            0.0f,  0.0f,
+            1.0f,  0.0f
+        };
+        
+        GLint vertexIndex = [self.eglProgram attribLocationOfName:@"position"];
+        glEnableVertexAttribArray(vertexIndex);
+        glVertexAttribPointer(vertexIndex, 2, GL_FLOAT, GL_FALSE, 0, vertexVertices);
+        
+        GLint textureIndex = [self.eglProgram attribLocationOfName:@"inputTextureCoordinate"];
+        glEnableVertexAttribArray(textureIndex);
+        glVertexAttribPointer(textureIndex, 2, GL_FLOAT, GL_FALSE, 0, textureVertices);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        
+        [[EAGLContext currentContext] presentRenderbuffer:GL_RENDERBUFFER];
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+        glDisableVertexAttribArray(vertexIndex);
+        glDisableVertexAttribArray(textureIndex);
+    });
 }
 
 @end

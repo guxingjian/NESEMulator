@@ -11,6 +11,8 @@
 
 @interface NesGameScreenView : UIView
 
+@property(nonatomic, assign)BOOL pause;
+
 - (void)nes_newframe:(u32*)pic;
 
 @end

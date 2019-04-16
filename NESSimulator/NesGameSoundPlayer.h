@@ -11,6 +11,8 @@
 
 @interface NesGameSoundPlayer : NSObject
 
+@property(atomic, assign)BOOL pause;
+
 - (void)nes_newsoundSample:(const blip_sample_t*)samples count:(long int)count;
 
 @end

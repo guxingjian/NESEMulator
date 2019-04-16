@@ -124,6 +124,7 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.pause = YES;
+    self.view.transform = CGAffineTransformMakeRotation(-M_PI/2);
     
     CGFloat fW = self.view.bounds.size.height;
     CGFloat fH = self.view.bounds.size.width;
@@ -135,13 +136,20 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     self.gameSound = soundPlayer;
     
     CGFloat fLen = 120;
-    UIView* directionView = [[UIView alloc] initWithFrame:CGRectMake(10, fH - 20 - fLen, fLen, fLen)];
+    UIView* directionView = [[UIView alloc] initWithFrame:CGRectMake(30, fH - 20 - fLen, fLen, fLen)];
     directionView.backgroundColor = [UIColor grayColor];
     directionView.layer.cornerRadius = fLen/2;
     directionView.layer.masksToBounds = YES;
     [self.view addSubview:directionView];
     self.directionView = directionView;
     [self setupDirectionArea];
+    
+    UIButton* btnQuit = [[UIButton alloc] initWithFrame:CGRectMake(20, 30, 80, 30)];
+    btnQuit.backgroundColor = [UIColor grayColor];
+    [btnQuit setTitle:@"退出" forState:UIControlStateNormal];
+    [btnQuit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btnQuit addTarget:self action:@selector(nesQuit:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnQuit];
     
     UIButton* btnSelect = [[UIButton alloc] initWithFrame:CGRectMake(fW - 20 - 100, 30, 80, 30)];
     btnSelect.backgroundColor = [UIColor grayColor];
@@ -160,7 +168,7 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     [self.view addSubview:btnStart];
     
     CGFloat fBtnLen = 60;
-    UIButton* btnA = [[UIButton alloc] initWithFrame:CGRectMake(fW - 70, fH - 140, fBtnLen, fBtnLen)];
+    UIButton* btnA = [[UIButton alloc] initWithFrame:CGRectMake(fW - 80, fH - 140, fBtnLen, fBtnLen)];
     btnA.backgroundColor = [UIColor redColor];
     btnA.layer.cornerRadius = fBtnLen/2;
     btnA.layer.masksToBounds = YES;
@@ -170,7 +178,7 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     [btnA addTarget:self action:@selector(aUpBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnA];
     
-    UIButton* btnB = [[UIButton alloc] initWithFrame:CGRectMake(fW - 140, fH - 140, fBtnLen, fBtnLen)];
+    UIButton* btnB = [[UIButton alloc] initWithFrame:CGRectMake(fW - 150, fH - 140, fBtnLen, fBtnLen)];
     btnB.backgroundColor = [UIColor blueColor];
     btnB.layer.cornerRadius = fBtnLen/2;
     btnB.layer.masksToBounds = YES;
@@ -180,8 +188,10 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     [btnB addTarget:self action:@selector(bUpBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnB];
     
-    UIButton* btnTogether = [[UIButton alloc] initWithFrame:CGRectMake(fW - 100, fH - 70, fBtnLen, fBtnLen)];
+    UIButton* btnTogether = [[UIButton alloc] initWithFrame:CGRectMake(fW - 115, fH - 70, fBtnLen, fBtnLen)];
     btnTogether.backgroundColor = [UIColor yellowColor];
+    [btnTogether setTitle:@"C" forState:UIControlStateNormal];
+    [btnTogether setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btnTogether.layer.cornerRadius = fBtnLen/2;
     btnTogether.layer.masksToBounds = YES;
     [btnTogether addTarget:self action:@selector(togetherDownBtn:) forControlEvents:UIControlEventTouchDown];
@@ -189,6 +199,21 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     [self.view addSubview:btnTogether];
     
     [self setupEmulator];
+}
+
+- (void)nesQuit:(UIButton*)btn{
+    self.pause = YES;
+    self.gameView.pause = YES;
+    self.gameSound.pause = YES;
+    
+    APU::registeSoundCallback(0, 0);
+    PPU::registeNewFrame(0, 0);
+    Joypad::registeJoypadCallback(0, 0);
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }];
 }
 
 - (void)makeTogetherSerial{
@@ -217,7 +242,7 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
 }
 
 - (void)makeBBtnSerial{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.08 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if(!self.BFlag)
             return ;
         self->btnStatus[NES_BTN_B] = !self->btnStatus[NES_BTN_B];
@@ -237,7 +262,7 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
 }
 
 - (void)makeABtnSerial{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.08 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if(!self.AFlag)
             return ;
         self->btnStatus[NES_BTN_A] = !self->btnStatus[NES_BTN_A];
@@ -304,15 +329,23 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
 }
 
 - (void)setupEmulator{
-    APU::init();
-    NSString* nesPath = [[NSBundle mainBundle] pathForResource:@"test2.nes" ofType:nil];
+    if(self.nesPath.length == 0)
+        return ;
+    
+    if(self.bAudioStatus){
+        APU::init();
+        APU::registeSoundCallback((__bridge void*)self.gameSound, nesApuCallback);
+    }else{
+        APU::registeSoundCallback(0, 0);
+    }
+    
+    NSString* nesPath = self.nesPath;
     Cartridge::load([nesPath UTF8String]);
     if(Cartridge::loaded()){
         self.pause = NO;
     }
     PPU::registeNewFrame((__bridge void*)self.gameView, nesNewFrameCallBack);
     Joypad::registeJoypadCallback((__bridge void*)self, nesJoypadCallBack);
-    APU::registeSoundCallback((__bridge void*)self.gameSound, nesApuCallback);
     [self run];
 }
 
@@ -320,29 +353,26 @@ static void nesApuCallback(void* obj, const blip_sample_t* samples, long int cou
     const int FPS   = 60;
     const CGFloat DELAY = 1000.0f / FPS;
     
-    self.frameStart = [NSDate timeIntervalSinceReferenceDate]*1000;
+    _frameStart = [NSDate timeIntervalSinceReferenceDate]*1000;
     if (!self.pause){
         CPU::run_frame();
     }
     
-    self.frameTime = [NSDate timeIntervalSinceReferenceDate]*1000 - self.frameStart;
+    _frameTime = [NSDate timeIntervalSinceReferenceDate]*1000 - _frameStart;
     if (self.frameTime < DELAY){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((DELAY - self.frameTime) * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((DELAY - _frameTime) * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
             [self run];
         });
     }else{
-        [self run];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self run];
+        });
     }
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscapeLeft;
-}
-
-- (BOOL)shouldAutorotate{
+- (BOOL)prefersStatusBarHidden{
     return YES;
 }
-
 /*
 #pragma mark - Navigation
 
@@ -390,5 +420,6 @@ static u8 nesJoypadCallBack(void* obj, int n){
 }
 
 static void nesApuCallback(void* obj, const blip_sample_t* samples, long int count){
-    
+    NesGameSoundPlayer* soundPlayer = (__bridge NesGameSoundPlayer*)obj;
+    [soundPlayer nes_newsoundSample:samples count:count];
 }
